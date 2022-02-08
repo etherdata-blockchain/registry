@@ -9,6 +9,7 @@ services:
     environment:
       DOMAINS: 'registry.etdchain.net -> http://registry:5000, hub.registry.etdchain.net -> http://registry-ui:80'
       STAGE: 'production' # Don't use production until staging works
+      CLIENT_MAX_BODY_SIZE: 0
     volumes:
       - ./https:/var/lib/https-portal
 
