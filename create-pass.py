@@ -1,16 +1,13 @@
 import os
-from subprocess import run
+from subprocess import run, getoutput
 
 
 # run docker create password command
 def create_pass(username, password):
     # run htpasswd command
     # docker run --entrypoint htpasswd httpd:2 -Bbn testuser testpassword > auth/htpasswd
-    cmd = ["docker", "run", "--entrypoint", "htpasswd",
-           "httpd:2", "-Bbn", username, password]
-
-    # run command
-    run(cmd)
+    run(["docker", "run", "--entrypoint", "htpasswd", "httpd:2", "-Bbn",
+        username, password], stdout=open("auth/htpasswd", "w"))
 
 
 # create auth folder if not exist
